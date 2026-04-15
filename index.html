@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>System Overload 😈</title>
+
+<style>
+body {
+  background: black;
+  color: red;
+  text-align: center;
+  font-family: Arial;
+}
+
+/* blink effect */
+@keyframes blink {
+  0% { background: black; }
+  50% { background: red; }
+  100% { background: black; }
+}
+
+.blink {
+  animation: blink 0.2s infinite;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>⚠️ SYSTEM OVERLOAD ⚠️</h1>
+<p>Tap anywhere to start...</p>
+
+<!-- 🔊 audio -->
+<audio id="sound">
+  <source src="sound.mp3/ribhavagrawal-alarm-siren-sound-effect-type-01-294194 (1).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let count = 0;
+
+// full screen
+function goFullScreen() {
+  let elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  }
+}
+
+function prank() {
+  if (count < 10) {
+    alert("⚠️ Processing...");
+    document.body.classList.toggle("blink");
+    count++;
+    setTimeout(prank, 500);
+  } else {
+    alert("System recovered 😅");
+  }
+}
+
+
+function startPrank() {
+  let audio = document.getElementById("sound");
+
+  audio.play().catch(() => {
+    console.log("User interaction needed");
+  });
+
+  goFullScreen();
+  prank();
+}
+document.body.addEventListener("click", startPrank);
+document.body.addEventListener("touchstart", startPrank);
+
+</script>
+
+</body>
+</html>
